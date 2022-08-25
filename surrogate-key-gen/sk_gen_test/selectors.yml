@@ -1,0 +1,5 @@
+---
+selectors:
+  - name: "control_data"
+    definition:
+      tag: "control_data"

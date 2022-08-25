@@ -1,0 +1,6 @@
+
+version: 2
+
+models:
+  - name: sample_data
+    description: sample supplied data partitioned by date

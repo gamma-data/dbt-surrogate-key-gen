@@ -1,0 +1,29 @@
+---
+version: 2
+
+seeds:
+  - name: data-001
+    config:
+      quote_columns: true
+      column_types:
+        id: string
+        job_title: string
+        email_address: string
+        firstname_lastname: string
+  - name: data-002
+    config:
+      quote_columns: true
+      column_types:
+        id: string
+        job_title: string
+        email_address: string
+        firstname_lastname: string
+  - name: data-003
+    config:
+      # schema: other_data
+      quote_columns: true
+      column_types:
+        id: string
+        job_title: string
+        email_address: string
+        firstname_lastname: string

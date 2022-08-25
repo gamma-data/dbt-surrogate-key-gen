@@ -1,0 +1,16 @@
+---
+version: 2
+
+seeds:
+  - name: key_map
+    config:
+      enabled: false
+      column_types:
+        source: string
+        next_sk: integer
+  - name: x_km_sample_data
+    config:
+      enabled: true
+      column_types:
+        id: integer
+        src_key: string
