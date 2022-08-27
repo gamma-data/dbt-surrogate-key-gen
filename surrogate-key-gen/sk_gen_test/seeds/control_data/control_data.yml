@@ -2,7 +2,7 @@
 version: 2
 
 seeds:
-  - name: key_map
+  - name: x_key_map
     config:
       enabled: false
       column_types:
@@ -10,7 +10,7 @@ seeds:
         next_sk: integer
   - name: x_km_sample_data
     config:
-      enabled: true
+      enabled: false
       column_types:
         id: integer
         src_key: string

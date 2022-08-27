@@ -9,5 +9,5 @@ select
     , Email_Address as email_address
     , FirstName_LastName as firstname_lastname
     -- inject source id metadata
-from {{ ref('sample_data') }}
+from {{ source('raw_data', 'sample_data') }}
 where partition_dt = '{{ partition_dt }}'

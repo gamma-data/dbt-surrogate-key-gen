@@ -10,17 +10,28 @@ CREATE OR REPLACE PROCEDURE dev_control_data.get_next_sk(
 BEGIN
   DECLARE new_next_sk INT64;
 
-  -- perform update and retrieval in the one transaction
-  BEGIN TRANSACTION;
-  UPDATE dev_control_data.key_map km
-  SET km.next_sk = km.next_sk + rec_cnt
-  WHERE km.source = src_name;
+  -- if the record count is 0, just return the "next_sk" - skip the no-op update
 
-  SET new_next_sk = (
-    SELECT km.next_sk as new_next_sk
-    from dev_control_data.key_map km
-    where km.source = src_name
-  );
-  COMMIT TRANSACTION;
+  IF rec_cnt < 1 THEN
+    -- perform update and retrieval in the one transaction
+    BEGIN TRANSACTION;
+      UPDATE dev_control_data.key_map km
+        SET km.next_sk = km.next_sk + rec_cnt
+        WHERE km.source = src_name;
+
+      SET new_next_sk = (
+        SELECT km.next_sk AS new_next_sk
+          FROM dev_control_data.key_map km
+          WHERE km.source = src_name
+      );
+    COMMIT TRANSACTION;
+  ELSE
+    -- skip the txn and just return the value
+    SET new_next_sk = (
+      SELECT km.next_sk AS new_next_sk
+        FROM dev_control_data.key_map km
+        WHERE km.source = src_name
+    );
+  END IF;
   SET next_sk = new_next_sk - rec_cnt; 
 END;
