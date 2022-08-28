@@ -20,7 +20,6 @@ seeds:
         firstname_lastname: string
   - name: data-003
     config:
-      # schema: other_data
       quote_columns: true
       column_types:
         id: string

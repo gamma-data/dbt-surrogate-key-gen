@@ -5,9 +5,11 @@ sources:
   - name: control_data
     schema: "{{ env_var('DBT_SOURCE_SCHEMA', 'dev') }}_control_data"
     tables:
-      - name: km_sample_data
+      - name: int64_km_sample_entity
+      - name: uuid_km_sample_entity
+
   - name: raw_data
-    schema: "{{ env_var('DBT_SOURCE_SCHEMA', 'dev') }}"
+    schema: "{{ env_var('DBT_SOURCE_SCHEMA', 'dev') }}_raw_data"
     description: sample supplied data partitioned by date
     tables:
       - name: sample_data

@@ -35,26 +35,14 @@ models:
   sk_gen_test:
     control_data:
       +schema: control_data
-    raw_data:
-      +schema: raw_data
-      +materialized: table
-      tags:
-        - "raw_data"
     trgt_tx:
       +schema: trgt_tx
       +materialized: view
-    trgt_data:
-      +schema: trgt_data
-      +materialized: table
     
 
 seeds:
   sk_gen_test:
     +schema: seed_data
-    src_data:
+    seed_data:
       tags:
-        - "raw_data"
-    control_data:
-      +schema: control_data
-      tags:
-        - "control_data"
+        - "seed_data"

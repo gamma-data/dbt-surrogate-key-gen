@@ -1,9 +1,0 @@
-
-version: 2
-
-sources:
-  - name: raw_data
-    schema: "{{ env_var('DBT_SOURCE_SCHEMA', 'dev') }}"
-    description: sample supplied data partitioned by date
-    tables:
-      - name: sample_data
