@@ -1,0 +1,21 @@
+---
+version: 2
+
+models:
+  - name: md5_km_sample_entity
+    columns:
+      - name: id
+        tests:
+          - unique
+  - name: uuid_km_sample_entity
+    columns:
+      - name: id
+        tests:
+          - unique
+
+  - name: int64_km_sample_entity
+    columns:
+      - name: id
+        tests:
+          - unique
+
