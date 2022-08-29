@@ -1,8 +1,4 @@
-{{
-    config(
-      materialized="view"
-    )
-}}
+{{ config(materialized="view") }}
 
 with raw_data as (
     select

@@ -1,11 +1,15 @@
+-- any new records will have been added to the keymap by this point
+-- simple inner join should yield the desired record set with keys assigned
 
+{{ config(materialized="view") }}
 
-with new_recs as (
-    select *
-    from {{ ref('md5_newkm_sample_entity') }}
-), updt_recs as (
-    select *
-    from {{ ref('md5_updt_sample_entity') }}
+with src_recs as (
+    select
+      km.id as sk_id
+      , src.id as src_key
+      , src.*
+    from {{ ref('ws_sample_data') }} as src
+    join {{ ref('md5_km_sample_entity') }} as km
+      on src.id = km.src_key
 )
-select * from updt_recs
-union all (select * from new_recs)
+select * from src_recs
