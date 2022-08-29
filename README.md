@@ -34,6 +34,7 @@ included as both a `source` and a `model`.
 #### Hash/UUID Pattern
 Pattern follows processing steps:
 | Step | Action |
+| ---- | ------ |
 | `ws_sample_data` | select a working set of `source_data`.  In this case, the source data has a partition date identifier. |
 | `newkm_sample_entity` | identify the sample data records that do not yet have surrogate keys allocated via an outer joib with the key map table and allocate surrogate keys to the new records, materialsied as a `view` as allocation does not require updating control tables. |
 | `km_sample_entity` | updating the sample entity key map table with the new surrogate key values.  Materialised as an `incremental` table.  Could also be applied using snapshots. |
