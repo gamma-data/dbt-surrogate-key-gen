@@ -1,5 +1,7 @@
 -- identify the new records that don't yet have a natural key
 
+-- depends on {{ ref('uuid_km_sample_entity')}}
+
 select
   km.id as sk_id
   , cast(src.id as STRING) as src_key
