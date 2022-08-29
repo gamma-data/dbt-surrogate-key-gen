@@ -1,6 +1,8 @@
 -- any new records will have been added to the keymap table by this point
 -- simple inner join should yield the desired record set with keys assigned
 
+{{ config(materialized="view") }}
+
 with src_recs as (
     select
       km.id as sk_id
