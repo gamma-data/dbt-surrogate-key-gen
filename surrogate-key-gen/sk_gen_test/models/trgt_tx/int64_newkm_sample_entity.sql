@@ -1,3 +1,7 @@
+-- allocate a new block of surrogate keys ready to update the key map table
+-- unable to merge the new entity view with the key map view as the allocation of keys requires a record
+-- count of the new entities.
+
 {{
     config(
       materialized="table"
@@ -26,11 +30,11 @@
 
 with raw_data as (
     select
-        *
+        src_key
     from {{ ref('int64_new_sample_entity') }}
 )
 
 select
   row_number() over() + {{ next_sk }} - 1 as sk_id 
-  , raw_data.*
+  , raw_data.src_key
 from raw_data

@@ -5,9 +5,10 @@ DAY_01 := 2022-08-20
 DAY_02 := 2022-08-21
 DAY_03 := 2022-08-22
 
+.PHONY: dbt-docs-gen dbt-compile dbt-run-day-01 dbt-run-day-02 dbt-run-day-03
 
 dbt-docs-gen:
-    dbt docs generate \
+	dbt docs generate \
 	    --vars "{'partition_dt': $(DAY_01)}" 
 
 dbt-compile:
